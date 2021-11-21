@@ -20,10 +20,11 @@ GPIO.setup(DCpin, GPIO.OUT)
 pwm = GPIO.PWM(DCpin,100)
 pwm.start(0)
 
-pwm.ChangeDutyCycle(10)
+pwm.ChangeDutyCycle(30)
 time.sleep(10)
 pwm.ChangeDutyCycle(0)
 
+GPIO.cleanup()
 # functions
 # handing out cards for this game
 # load data
