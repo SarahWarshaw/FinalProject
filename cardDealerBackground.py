@@ -18,11 +18,12 @@ DCpin = 20
 button = 12
 GPIO.setup(DCpin, GPIO.OUT)
 GPIO.setup(button, GPIO.IN)
+GPIO.setup(button, GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
 pwm = GPIO.PWM(DCpin,100)
 pwm.start(0)
 while True:
   try:
-    if button == 1:
+    if GPIO.input(button) == 1:
       pwm.ChangeDutyCycle(30)
       time.sleep(10)
       pwm.ChangeDutyCycle(0)
