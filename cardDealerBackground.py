@@ -19,11 +19,14 @@ GPIO.setup(DCpin, GPIO.OUT)
 
 pwm = GPIO.PWM(DCpin,100)
 pwm.start(0)
-
-pwm.ChangeDutyCycle(30)
-time.sleep(10)
-pwm.ChangeDutyCycle(0)
-
+while True:
+  try:
+    pwm.ChangeDutyCycle(30)
+    time.sleep(10)
+    pwm.ChangeDutyCycle(0)
+    myStepper.goAngle(90,1)
+  except Exception as e:
+    print(e)
 GPIO.cleanup()
 # functions
 # handing out cards for this game
