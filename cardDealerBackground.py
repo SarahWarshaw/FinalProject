@@ -15,16 +15,20 @@ GPIO.setmode(GPIO.BCM)
 # declare variables 
 myStepper = Stepper()
 DCpin = 20
+button = 12
 GPIO.setup(DCpin, GPIO.OUT)
-
+GPIO.setup(button, GPIO.IN)
 pwm = GPIO.PWM(DCpin,100)
 pwm.start(0)
 while True:
   try:
-    pwm.ChangeDutyCycle(30)
-    time.sleep(10)
-    pwm.ChangeDutyCycle(0)
-    myStepper.goAngle(90,1)
+    if button == 1:
+      pwm.ChangeDutyCycle(30)
+      time.sleep(10)
+      pwm.ChangeDutyCycle(0)
+      myStepper.goAngle(90,1)
+    else:
+      continue
   except Exception as e:
     print(e)
 GPIO.cleanup()
