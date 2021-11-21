@@ -20,8 +20,8 @@ GPIO.setup(DCpin, GPIO.OUT)
 pwm = GPIO.PWM(DCpin,100)
 pwm.start(0)
 
-pwm.ChangeDutyCycle(50)
-time.sleep(1)
+pwm.ChangeDutyCycle(10)
+time.sleep(10)
 pwm.ChangeDutyCycle(0)
 
 # functions
