@@ -11,7 +11,6 @@ for i in range(4):
   GPIO.setup(cols[i], GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
 
 def readLine(line, characters):
-  Winner = "noWinner"
   GPIO.output(line, GPIO.HIGH)
   if(GPIO.input(cols[0]) == 1):
     Winner = "player" +(characters[0])
