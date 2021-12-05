@@ -31,6 +31,7 @@ while True:
     readLine(rows[1], ["4","5","6","B"])
     readLine(rows[2], ["7","8","9","C"])
     readLine(rows[3], ["*","0","#","D"])
+    print(Winner)
     if (Winner == "player1" or Winner == "player2" or Winner == "player3" or Winner == "player4"):
       print(Winner)
     sleep(0.1)
