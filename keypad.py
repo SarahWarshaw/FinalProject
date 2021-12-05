@@ -26,10 +26,10 @@ def readLine(line, characters,Winner):
 while True:
   try:
     Winner = "noWinner"
-    readLine(rows[0], ["1","2","3","A"])
-    readLine(rows[1], ["4","5","6","B"])
-    readLine(rows[2], ["7","8","9","C"])
-    readLine(rows[3], ["*","0","#","D"])
+    Winner = readLine(rows[0], ["1","2","3","A"],Winner)
+    Winner = readLine(rows[1], ["4","5","6","B"],Winner)
+    Winner = readLine(rows[2], ["7","8","9","C"],Winner)
+    Winner = readLine(rows[3], ["*","0","#","D"],Winner)
     print(Winner)
     if (Winner == "player1" or Winner == "player2" or Winner == "player3" or Winner == "player4"):
       print(Winner)
