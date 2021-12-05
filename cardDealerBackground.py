@@ -14,7 +14,7 @@ from stepper import Stepper
 GPIO.setmode(GPIO.BCM)
 # declare variables 
 myStepper = Stepper()
-DCpin = 20
+DCpin = 20  #use 3.3V?
 button = 12
 GPIO.setup(DCpin, GPIO.OUT)
 GPIO.setup(button, GPIO.IN)
@@ -24,7 +24,7 @@ pwm.start(0)
 while True:
   try:
     if GPIO.input(button) == 1:
-      pwm.ChangeDutyCycle(30)
+      pwm.ChangeDutyCycle(35)
       time.sleep(10)
       pwm.ChangeDutyCycle(0)
       myStepper.goAngle(90,1)
@@ -32,7 +32,7 @@ while True:
       continue
   except Exception as e:
     print(e)
-GPIO.cleanup()
+    GPIO.cleanup()
 # functions
 # handing out cards for this game
 # load data
@@ -67,3 +67,18 @@ if photores > 20:
 # if button pressed refering to new turn
   # change LED color according to order of player colors
 
+
+# thread to check for end of game button being pressed
+'''
+Gamegoing = 1
+while Gamegoing:
+  if game == goFish:
+
+    if buttonCard == 1:
+      #deal another card to current player
+    if buttonTurn == 1:
+      # change LED color
+      # move motor to that player
+  if game = prez:
+    
+'''
