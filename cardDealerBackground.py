@@ -69,16 +69,23 @@ if photores > 20:
 
 
 # thread to check for end of game button being pressed
-'''
-Gamegoing = 1
-while Gamegoing:
-  if game == goFish:
-
-    if buttonCard == 1:
-      #deal another card to current player
+if game == goFish:
+  noWinner = True
+  while (noWinner):
     if buttonTurn == 1:
+      #deal another card to current player
       # change LED color
-      # move motor to that player
-  if game = prez:
-    
-'''
+      # move motor to next player in order
+      # maybe for degrees have those set in an array or a tuple so that the degrees and direction are always the same
+    if keypadPress==1:
+      noWinner = False
+      # Winner is corresponding to number pressed on keypad
+      # display html screen with option of starting a new game 
+if game == prez
+  noWinner = True
+  while (noWinner):
+    if buttonTurn == 1:
+      # change LED
+    if keypadPress ==1:
+      noWinner = False
+      # Winner displayed on html screen

@@ -11,16 +11,18 @@ for i in range(4):
   GPIO.setup(cols[i], GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
 
 def readLine(line, characters):
+  Winner = noWinner
 	GPIO.output(line, GPIO.HIGH)
-	if(GPIO.input(cols[0]) == 1):
-    	    print(characters[0])
+  if(GPIO.input(cols[0]) == 1):
+    Winner = characters[0]
 	if(GPIO.input(cols[1]) == 1):
-        	    print(characters[1])
+    Winner = characters[1]
 	if(GPIO.input(cols[2]) == 1):
-    	    print(characters[2])
+    Winner = characters[2]
 	if(GPIO.input(cols[3]) == 1):
-    	    print(characters[3])
+    Winner = characters[3]
 	GPIO.output(line, GPIO.LOW)
+  return Winner
 
 while True:
   try:
@@ -28,6 +30,8 @@ while True:
     readLine(rows[1], ["4","5","6","B"])
     readLine(rows[2], ["7","8","9","C"])
     readLine(rows[3], ["*","0","#","D"])
+    if (Winner == 1 or Winner == 2 or Winner == 3 or Winner == 4):
+      print(Winner)
     sleep(0.1)
   except Exception as e:
     print(e)
