@@ -1,4 +1,4 @@
-from GPIO import GPIO
+import RPi.GPIO as GPIO
 from time import sleep
 
 rows = [26, 19,13,6]
