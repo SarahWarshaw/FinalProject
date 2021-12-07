@@ -69,6 +69,7 @@ if photores > 20:
 
 
 # thread to check for end of game button being pressed
+'''
 if game == goFish:
   noWinner = True
   while (noWinner):
@@ -89,3 +90,4 @@ if game == prez
     if keypadPress ==1:
       noWinner = False
       # Winner displayed on html screen
+'''
