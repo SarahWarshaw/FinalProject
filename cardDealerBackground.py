@@ -24,7 +24,7 @@ pwm.start(0)
 while True:
   try:
     if GPIO.input(button) == 1:
-      pwm.ChangeDutyCycle(50)
+      pwm.ChangeDutyCycle(70)
       time.sleep(5)
       pwm.ChangeDutyCycle(0)
       myStepper.goAngle(90,1)
