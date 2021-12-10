@@ -23,7 +23,7 @@ button = 12
 GPIO.setup(button, GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
 
 #multiprocessing for keypad
-noWinner = multiprocessing.value('i')
+noWinner = multiprocessing.Value('i')
 noWinner = 1
 p = multiprocessing.Process(target = gf.check_keypad,args=(noWinner,))
 p.daemon = True
