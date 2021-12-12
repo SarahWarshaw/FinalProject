@@ -61,7 +61,7 @@ while True:
                 letter = 'E'
                 letter = gf.getCard()
                 if letter == 'A':
-                  gf.deal_card()
+                  #gf.deal_card()
                   print(letter)  
                 if GPIO.input(button) == 1:
                   
