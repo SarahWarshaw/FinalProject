@@ -36,7 +36,7 @@ while True:
       readyToBegin = True
       game = "Go Fish!"
       num = 2
-      playerInfo = []
+      playerInfo = {}
       playerInfo['Player1'] = ['test',[255,0,0]]
       playerInfo['Player2'] = ['test2', [0,255,0]]
       if (readyToBegin):
