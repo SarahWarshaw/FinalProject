@@ -58,6 +58,7 @@ while True:
               #gf.setup_turn(playerInfo[info_key][1])
               
               while (noWinner.value == 1):
+                letter = 'E'
                 letter = gf.getCard()
                 if letter == 'A':
                   gf.deal_card()
