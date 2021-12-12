@@ -58,14 +58,14 @@ while True:
               #gf.setup_turn(playerInfo[info_key][1])
               
               while (noWinner.value == 1):
+                # letter A on keypad will deal out a card
                 letter = 'E'
                 letter = gf.getCard()
                 if letter == 'A':
                   #gf.deal_card()
-                  print(letter)  
+                  print(letter) 
+                # button pressed will change turn 
                 if GPIO.input(button) == 1:
-                  
-                  gf.deal_card()
                   if (currPlayer < num):
                       gf.end_turn(num, 1)
                   # Arrange how to iterate by the dictionary keys
