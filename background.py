@@ -58,7 +58,6 @@ while True:
               #gf.setup_turn(playerInfo[info_key][1])
               
               while (noWinner.value == 1):
-                print(noWinner.value)
                 # letter A on keypad will deal out a card
                 letter = 'E'
                 letter = gf.getCard()
@@ -85,6 +84,7 @@ while True:
                   gf.setup_turn(playerInfo[info_key][1])
                   # maybe for degrees have those set in an array or a tuple so that the degrees and direction are always the same
               print("end")
+              
               '''
                 if keypadPress==1:
                   noWinner = False

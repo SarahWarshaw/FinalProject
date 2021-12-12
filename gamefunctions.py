@@ -150,7 +150,8 @@ def deal_card():
  
 def check_keypad(noWinner):
     
-    while (noWinner.value == 1):
+    while True:
+      if (noWinner.value == 1):
         try:
           winner = "noWinner"
           noWinner.value, winner = readLine(rows[0], ["1","2","3","A"],winner,noWinner)
