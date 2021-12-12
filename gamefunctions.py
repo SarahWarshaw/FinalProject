@@ -173,27 +173,21 @@ def readLine(line, characters, winner, noWinner):
     winner = "Player" +(characters[2])
     noWinner.value = 0
   if(GPIO.input(cols[3]) == 1):
-    winner = "Player" +(characters[3])
-    noWinner.value = 0
-      
+    noWinner.value = 1
   GPIO.output(line, GPIO.LOW)
   return noWinner.value, winner
 
-def readLetter(line, characters, winner, noWinner):
+def getCard():
+  letter = 'E'
+  letter = readLetter(rows[0], ["1","2","3","A"])
+  letter = readLetter(rows[1], ["4","5","6","B"])
+  letter = readLetter(rows[2], ["7","8","9","C"])
+  letter = readLetter(rows[3], ["*","0","#","D"]) 
+  return letter
+
+def readLetter(line, characters):
   GPIO.output(line, GPIO.HIGH)
-  if(GPIO.input(cols[0]) == 1):
-    winner = "Player" +(characters[0])
-    noWinner.value = 0
-  if(GPIO.input(cols[1]) == 1):
-    winner = "Player" +(characters[1])
-    noWinner.value = 0
-  if(GPIO.input(cols[2]) == 1):
-    winner = "Player" +(characters[2])
-    noWinner.value = 0
   if(GPIO.input(cols[3]) == 1):
-    winner = "Player" +(characters[3])
-    noWinner.value = 0
-  if(GPIO.input(cols[4]) == 1):
-    noWinner.value = 1  
+    letter = characters[3] 
   GPIO.output(line, GPIO.LOW)
-  return noWinner.value, winner
+  return letter

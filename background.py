@@ -52,12 +52,16 @@ while True:
           if (game == "Go Fish!"):
               print("Go Fish!")
               print(noWinner.value)
+              noWinner.value = 1
               info_key = info_key + str(currPlayer)
               
               #gf.setup_turn(playerInfo[info_key][1])
               
               while (noWinner.value == 1):
-                  
+                letter = gf.getCard()
+                if letter == 'A':
+                  gf.deal_card()
+                  print(letter)  
                 if GPIO.input(button) == 1:
                   
                   gf.deal_card()
