@@ -52,7 +52,6 @@ while True:
           if (game == "Go Fish!"):
               print("Go Fish!")
               print(noWinner.value)
-              noWinner.value = 1
               info_key = info_key + str(currPlayer)
               
               #gf.setup_turn(playerInfo[info_key][1])
