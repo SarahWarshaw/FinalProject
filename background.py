@@ -58,6 +58,7 @@ while True:
               #gf.setup_turn(playerInfo[info_key][1])
               
               while (noWinner.value == 1):
+                print(noWinner.value)
                 # letter A on keypad will deal out a card
                 letter = 'E'
                 letter = gf.getCard()
