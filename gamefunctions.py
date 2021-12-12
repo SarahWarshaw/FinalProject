@@ -179,13 +179,13 @@ def readLine(line, characters, winner, noWinner):
 
 def getCard():
   letter = 'E'
-  letter = readLetter(rows[0], ["1","2","3","A"])
-  letter = readLetter(rows[1], ["4","5","6","B"])
-  letter = readLetter(rows[2], ["7","8","9","C"])
-  letter = readLetter(rows[3], ["*","0","#","D"]) 
+  letter = readLetter(rows[0], ["1","2","3","A"],letter)
+  letter = readLetter(rows[1], ["4","5","6","B"],letter)
+  letter = readLetter(rows[2], ["7","8","9","C"],letter)
+  letter = readLetter(rows[3], ["*","0","#","D"],letter) 
   return letter
 
-def readLetter(line, characters):
+def readLetter(line, characters,letter):
   GPIO.output(line, GPIO.HIGH)
   if(GPIO.input(cols[3]) == 1):
     letter = characters[3] 
