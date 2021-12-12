@@ -24,32 +24,43 @@ GPIO.setup(button, GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
 
 #multiprocessing for keypad
 noWinner = multiprocessing.Value('i')
-noWinner = 1
+noWinner.value = 1
 p = multiprocessing.Process(target = gf.check_keypad,args=(noWinner,))
 p.daemon = True
 p.start()
+#t.join()
 
 while True:
   try:
-      readyToBegin, game, num, playerInfo = gf.get_game_info()
+      #readyToBegin, game, num, playerInfo = gf.get_game_info()
+      readyToBegin = True
+      game = "Go Fish!"
+      num = 2
+      playerInfo = []
+      playerInfo['Player1'] = ['test',[255,0,0]]
+      playerInfo['Player2'] = ['test2', [0,255,0]]
       if (readyToBegin):
-          print(playerInfo)
+          readyToBegin = False
+          #print(playerInfo)
           
-          gf.deal_setup(num, game)
+          #gf.deal_setup(num, game)
           currPlayer = 1
+          game = "Go Fish!"
+          num = 2
           info_key = "Player"
 
           if (game == "Go Fish!"):
               print("Go Fish!")
-              noWinner = 1
+              print(noWinner.value)
+              noWinner.value = 1
               info_key = info_key + str(currPlayer)
               
-              gf.setup_turn(playerInfo[info_key][1])
+              #gf.setup_turn(playerInfo[info_key][1])
               
-              while (noWinner==1):
+              while (noWinner.value == 1):
+                  
                 if GPIO.input(button) == 1:
                   
-                  print("42")
                   gf.deal_card()
                   if (currPlayer < num):
                       gf.end_turn(num, 1)
@@ -68,7 +79,8 @@ while True:
                       
                   gf.setup_turn(playerInfo[info_key][1])
                   # maybe for degrees have those set in an array or a tuple so that the degrees and direction are always the same
-                '''
+              print("end")
+              '''
                 if keypadPress==1:
                   noWinner = False
                   # Winner is corresponding to number pressed on keypad
@@ -83,8 +95,7 @@ while True:
               noWinner = False
               # Winner displayed on html screen
     ''' 
-              print(noWinner)
+    
   except Exception as e:
     print(e)
     #GPIO.cleanup()
-    

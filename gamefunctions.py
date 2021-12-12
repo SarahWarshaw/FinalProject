@@ -7,6 +7,7 @@ from time import sleep
 import re
 from stepper import Stepper
 import json
+import multiprocessing
 
 GPIO.setmode(GPIO.BCM)
 
@@ -148,31 +149,51 @@ def deal_card():
     pwm.ChangeDutyCycle(0)
  
 def check_keypad(noWinner):
-  while True:
-    try:
-      noWinner = 1
-      Winner = "noWinner"
-      Winner = readLine(rows[0], ["1","2","3","A"],Winner,noWinner)
-      Winner = readLine(rows[1], ["4","5","6","B"],Winner,noWinner)
-      Winner = readLine(rows[2], ["7","8","9","C"],Winner,noWinner)
-      Winner = readLine(rows[3], ["*","0","#","D"],Winner,noWinner)
-    except Exception as e:
-      print(e)
+    
+    while (noWinner.value == 1):
+        try:
+          winner = "noWinner"
+          noWinner.value, winner = readLine(rows[0], ["1","2","3","A"],winner,noWinner)
+          noWinner.value, winner = readLine(rows[1], ["4","5","6","B"],winner,noWinner)
+          noWinner.value, winner = readLine(rows[2], ["7","8","9","C"],winner,noWinner)
+          noWinner.value, winner = readLine(rows[3], ["*","0","#","D"],winner,noWinner)          
+        except Exception as e:
+          print(e)
     
     
-def readLine(line, characters,Winner,noWinner):
+def readLine(line, characters, winner, noWinner):
   GPIO.output(line, GPIO.HIGH)
   if(GPIO.input(cols[0]) == 1):
-    Winner = "player" +(characters[0])
-    noWinner = 0
+    winner = "Player" +(characters[0])
+    noWinner.value = 0
   if(GPIO.input(cols[1]) == 1):
-    Winner = "player" +(characters[1])
-    noWinner = 0
+    winner = "Player" +(characters[1])
+    noWinner.value = 0
   if(GPIO.input(cols[2]) == 1):
-    Winner = "player" +(characters[2])
-    noWinner = 0
+    winner = "Player" +(characters[2])
+    noWinner.value = 0
   if(GPIO.input(cols[3]) == 1):
-    Winner = "player" +(characters[3])
-    noWinner = 0
+    winner = "Player" +(characters[3])
+    noWinner.value = 0
+      
   GPIO.output(line, GPIO.LOW)
-  return Winner
+  return noWinner.value, winner
+
+def readLetter(line, characters, winner, noWinner):
+  GPIO.output(line, GPIO.HIGH)
+  if(GPIO.input(cols[0]) == 1):
+    winner = "Player" +(characters[0])
+    noWinner.value = 0
+  if(GPIO.input(cols[1]) == 1):
+    winner = "Player" +(characters[1])
+    noWinner.value = 0
+  if(GPIO.input(cols[2]) == 1):
+    winner = "Player" +(characters[2])
+    noWinner.value = 0
+  if(GPIO.input(cols[3]) == 1):
+    winner = "Player" +(characters[3])
+    noWinner.value = 0
+  if(GPIO.input(cols[4]) == 1):
+    noWinner.value = 1  
+  GPIO.output(line, GPIO.LOW)
+  return noWinner.value, winner
